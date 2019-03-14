@@ -1,5 +1,7 @@
 package ru.alexkulikov.diamonds.screen
 
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.input.GestureDetector
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
@@ -22,6 +24,7 @@ class GameScreen(private val context: Context): KtxScreen {
     }
 
     override fun show() {
+        Gdx.input.inputProcessor = GestureDetector(GestureController(mainStage.camera, this::createDiamond))
         test()
     }
 
@@ -29,7 +32,7 @@ class GameScreen(private val context: Context): KtxScreen {
         Utils.clearScreen()
 
         world.step(1.0f / 60.0f, 6, 2)
-        worldDebugRenderer.render(world, mainStage.camera.combined)
+//        worldDebugRenderer.render(world, mainStage.camera.combined)
         mainStage.act(delta)
         mainStage.draw()
     }
@@ -40,6 +43,10 @@ class GameScreen(private val context: Context): KtxScreen {
 
     private fun test() {
         boxFactory.createChain(floatArrayOf(1.0f, 1.0f, 9.0f, 1.0f), Material.ICE)
-        mainStage.addActor(Diamond(context, 5.0f, 5.0f, 0.4f))
+//        mainStage.addActor(Diamond(context, 5.0f, 5.0f, 0.4f))
+    }
+
+    private fun createDiamond(x: Float, y:Float) {
+        mainStage.addActor(Diamond(context, x, y, 0.4f))
     }
 }

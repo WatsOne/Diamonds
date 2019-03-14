@@ -22,11 +22,13 @@ class Diamond(context: Context, xInit: Float, yInit: Float, size: Float) : Actor
         setOrigin(size / 2, size / 2)
         sprite.setBounds(body.position.x, body.position.y, size, size)
         sprite.setOriginCenter()
-        sprite.color = Color.BLUE
+        sprite.setScale(1.7f)
+        sprite.color = Color.MAGENTA
 
         spriteGlow.setBounds(body.position.x, body.position.y, size, size)
         spriteGlow.setOriginCenter()
-        spriteGlow.color = Color.RED
+        spriteGlow.setScale(1.7f)
+        spriteGlow.color = Color(Color.RED.r, Color.RED.g, Color.RED.b, 0.75f)
     }
 
     override fun act(delta: Float) {

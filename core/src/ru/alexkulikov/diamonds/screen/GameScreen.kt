@@ -42,7 +42,7 @@ class GameScreen(private val context: Context): KtxScreen {
     }
 
     private fun test() {
-        boxFactory.createChain(floatArrayOf(1.0f, 1.0f, 9.0f, 1.0f), Material.ICE)
+        boxFactory.createChain(floatArrayOf(0.1f, 2.0f, 0.1f, 0.1f, 5.9f, 0.1f, 5.9f, 2.0f), Material.ICE)
 //        mainStage.addActor(Diamond(context, 5.0f, 5.0f, 0.4f))
     }
 

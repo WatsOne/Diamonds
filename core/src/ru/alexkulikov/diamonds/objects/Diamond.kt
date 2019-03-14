@@ -18,17 +18,19 @@ class Diamond(context: Context, xInit: Float, yInit: Float, size: Float) : Actor
     private val spriteGlow = Sprite(Texture("glow.png"))
 
     init {
+        val colors = getRandomColor()
+
         setBounds(xInit, yInit, size, size)
         setOrigin(size / 2, size / 2)
         sprite.setBounds(body.position.x, body.position.y, size, size)
         sprite.setOriginCenter()
         sprite.setScale(1.7f)
-        sprite.color = Color.MAGENTA
+        sprite.color = colors.first
 
         spriteGlow.setBounds(body.position.x, body.position.y, size, size)
         spriteGlow.setOriginCenter()
         spriteGlow.setScale(1.7f)
-        spriteGlow.color = Color(Color.RED.r, Color.RED.g, Color.RED.b, 0.75f)
+        spriteGlow.color = Color(colors.second.r, colors.second.g, colors.second.b, 0.75f)
     }
 
     override fun act(delta: Float) {
@@ -51,5 +53,16 @@ class Diamond(context: Context, xInit: Float, yInit: Float, size: Float) : Actor
         spriteGlow.draw(batch)
         batch.setBlendFunction(originalSrcFunc, originalDstFunc)
         sprite.draw(batch)
+    }
+
+    private fun getRandomColor(): Pair<Color, Color> {
+        val i = MathUtils.random(2)
+        return when (i) {
+            0 -> Pair(Color.MAGENTA, Color.RED)
+            1 -> Pair(Color.CYAN, Color.GREEN)
+            else -> {
+                Pair(Color.ORANGE, Color.YELLOW)
+            }
+        }
     }
 }

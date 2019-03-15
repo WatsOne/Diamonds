@@ -94,6 +94,7 @@ project(":core") {
         implementation "io.github.libktx:ktx-box2d:$ktxVersion"
         implementation "io.github.libktx:ktx-graphics:$ktxVersion"
         implementation "io.github.libktx:ktx-app:$ktxVersion"
+        implementation "io.github.libktx:ktx-assets:$ktxVersion"
     }
 }
 

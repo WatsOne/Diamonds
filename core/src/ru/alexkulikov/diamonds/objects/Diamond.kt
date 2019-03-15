@@ -2,20 +2,20 @@ package ru.alexkulikov.diamonds.objects
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Actor
 import ktx.inject.Context
+import ru.alexkulikov.diamonds.graphics.Images
 
 
 class Diamond(context: Context, xInit: Float, yInit: Float, size: Float) : Actor() {
     private val boxFactory: BoxFactory = context.inject()
     private var body = boxFactory.createBox(xInit, yInit, size, Material.WOOD)
 
-    private val sprite = Sprite(Texture("cube.png"))
-    private val spriteGlow = Sprite(Texture("glow.png"))
+    private val sprite = Sprite(Images.diamond())
+    private val spriteGlow = Sprite(Images.glow())
 
     init {
         val colors = getRandomColor()
